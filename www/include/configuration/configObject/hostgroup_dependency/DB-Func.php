@@ -125,8 +125,10 @@ function multipleHostGroupDependencyInDB($dependencies = array(), $nbrDup = arra
                     $DBRESULT = $pearDB->query($query);
                     $fields["dep_hgParents"] = "";
                     while ($hg = $DBRESULT->fetchRow()) {
-                        $query = "INSERT INTO dependency_hostgroupParent_relation VALUES ('', '" .
-                            $maxId["MAX(dep_id)"] . "', '" . $hg["hostgroup_hg_id"] . "')";
+                        $query =
+                            "INSERT INTO dependency_hostgroupParent_relation " .
+                            "            (dependency_dep_id, hostgroup_hg_id) " .
+                            " VALUES ('" . $maxId["MAX(dep_id)"] . "', '" . $hg["hostgroup_hg_id"] . "')";
                         $pearDB->query($query);
                         $fields["dep_hgParents"] .= $hg["hostgroup_hg_id"] . ",";
                     }
@@ -137,8 +139,10 @@ function multipleHostGroupDependencyInDB($dependencies = array(), $nbrDup = arra
                     $DBRESULT = $pearDB->query($query);
                     $fields["dep_hgChilds"] = "";
                     while ($hg = $DBRESULT->fetchRow()) {
-                        $query = "INSERT INTO dependency_hostgroupChild_relation VALUES ('', '" .
-                            $maxId["MAX(dep_id)"] . "', '" . $hg["hostgroup_hg_id"] . "')";
+                        $query =
+                            "INSERT INTO dependency_hostgroupChild_relation " .
+                            "            (dependency_dep_id, hostgroup_hg_id) " .
+                            " VALUES ('" . $maxId["MAX(dep_id)"] . "', '" . $hg["hostgroup_hg_id"] . "')";
                         $pearDB->query($query);
                         $fields["dep_hgChilds"] .= $hg["hostgroup_hg_id"] . ",";
                     }
