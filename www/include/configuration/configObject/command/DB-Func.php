@@ -252,6 +252,9 @@ function insertCommand($ret = array())
             '" . $pearDB->escape($ret['enable_shell']) . "', 
             '" . $pearDB->escape($ret["command_example"]) . "', 
             '" . $ret["command_type"]["command_type"] . "', 
+            " . (isset($ret['graph_id']) && !empty($ret['graph_id'])
+            ? "'" . $ret['graph_id'] . "'"
+            : "NULL") . ",
             '" . $ret["graph_id"] . "', 
             " . (isset($ret["connectors"]) && !empty($ret["connectors"])
             ? "'" . $ret['connectors'] . "'"
