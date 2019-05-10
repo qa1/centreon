@@ -255,7 +255,6 @@ function insertCommand($ret = array())
             " . (isset($ret['graph_id']) && !empty($ret['graph_id'])
             ? "'" . $ret['graph_id'] . "'"
             : "NULL") . ",
-            '" . $ret["graph_id"] . "', 
             " . (isset($ret["connectors"]) && !empty($ret["connectors"])
             ? "'" . $ret['connectors'] . "'"
             : "NULL") . ", 
