@@ -109,7 +109,8 @@ function multipleEscalationInDB($escalations = array(), $nbrDup = array())
                     while ($cg = $DBRESULT->fetchRow()) {
                         $DBRESULT2 = $pearDB->query(
                             "INSERT INTO escalation_contactgroup_relation "
-                            . "VALUES ('', '" . $maxId["MAX(esc_id)"] . "', '"
+                            . "(escalation_esc_id, contactgroup_cg_id) "
+                            . "VALUES ('" . $maxId["MAX(esc_id)"] . "', '"
                             . $cg["contactgroup_cg_id"] . "')"
                         );
                         $fields["esc_cgs"] .= $cg["contactgroup_cg_id"] . ",";
@@ -124,7 +125,8 @@ function multipleEscalationInDB($escalations = array(), $nbrDup = array())
                     while ($host = $DBRESULT->fetchRow()) {
                         $DBRESULT2 = $pearDB->query(
                             "INSERT INTO escalation_host_relation "
-                            . "VALUES ('', '" . $maxId["MAX(esc_id)"] . "', '"
+                            . "(escalation_esc_id, host_host_id) "
+                            . "VALUES ('" . $maxId["MAX(esc_id)"] . "', '"
                             . $host["host_host_id"] . "')"
                         );
                         $fields["esc_hosts"] .= $host["host_host_id"] . ",";
@@ -139,7 +141,8 @@ function multipleEscalationInDB($escalations = array(), $nbrDup = array())
                     while ($hg = $DBRESULT->fetchRow()) {
                         $DBRESULT2 = $pearDB->query(
                             "INSERT INTO escalation_hostgroup_relation "
-                            . "VALUES ('', '" . $maxId["MAX(esc_id)"] . "', '"
+                            . "(escalation_esc_id, hostgroup_hg_id) "
+                            . "VALUES ('" . $maxId["MAX(esc_id)"] . "', '"
                             . $hg["hostgroup_hg_id"] . "')"
                         );
                         $fields["esc_hgs"] .= $hg["hostgroup_hg_id"] . ",";
@@ -154,7 +157,8 @@ function multipleEscalationInDB($escalations = array(), $nbrDup = array())
                     while ($sg = $DBRESULT->fetchRow()) {
                         $DBRESULT2 = $pearDB->query(
                             "INSERT INTO escalation_servicegroup_relation "
-                            . "VALUES ('', '" . $maxId["MAX(esc_id)"] . "', '"
+                            . "(escalation_esc_id, servicegroup_sg_id) "
+                            . "VALUES ('" . $maxId["MAX(esc_id)"] . "', '"
                             . $sg["servicegroup_sg_id"] . "')"
                         );
                         $fields["esc_sgs"] .= $sg["servicegroup_sg_id"] . ",";
@@ -168,7 +172,8 @@ function multipleEscalationInDB($escalations = array(), $nbrDup = array())
                     while ($sv = $DBRESULT->fetchRow()) {
                         $DBRESULT2 = $pearDB->query(
                             "INSERT INTO escalation_service_relation "
-                            . "VALUES ('', '" . $maxId["MAX(esc_id)"] . "', '"
+                            . "(escalation_esc_id, service_service_id, host_host_id) "
+                            . "VALUES ('" . $maxId["MAX(esc_id)"] . "', '"
                             . $sv["service_service_id"] . "', '"
                             . $sv["host_host_id"] . "')"
                         );
@@ -184,7 +189,8 @@ function multipleEscalationInDB($escalations = array(), $nbrDup = array())
                     while ($sv = $DBRESULT->fetchRow()) {
                         $DBRESULT2 = $pearDB->query(
                             "INSERT INTO escalation_meta_service_relation "
-                            . "VALUES ('', '" . $maxId["MAX(esc_id)"] . "', '"
+                            . "(escalation_esc_id, meta_service_meta_id) "
+                            . "VALUES ('" . $maxId["MAX(esc_id)"] . "', '"
                             . $sv["meta_service_meta_id"] . "')"
                         );
                         $fields["esc_metas"] .= $sv["meta_service_meta_id"] . ",";
